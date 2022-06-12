@@ -7,11 +7,14 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import MicIcon from '@mui/icons-material/Mic';
+import SendIcon from '@mui/icons-material/Send';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import db from '../firebase'
 import { useStateValue } from '../Stateprovider';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { actionTypes } from '../reducer'
 
 
 function Chat() {
@@ -20,7 +23,7 @@ function Chat() {
     const roomId = useParams();
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState([]);
-    const [{ user }, dispatch] = useStateValue();
+    const [{ user, status }, dispatch] = useStateValue();
 
     useEffect(() => {
         if (roomId) {
@@ -42,6 +45,7 @@ function Chat() {
 
     const sendMessage = (e) => {
         e.preventDefault();
+        if (msg === '') return
         db.collection('rooms').doc(roomId.roomId).collection('messages').add({
             name: user.displayName,
             message: msg,
@@ -50,9 +54,17 @@ function Chat() {
         setMsg('');
 
     }
+    const sidebarStatus = () => {
+        dispatch({
+            type: actionTypes.SET_STATUS,
+            status: true,
+        })
+        console.log(status)
+    }
     return (
         <div className='chat'>
             <div className="chat-header">
+                <KeyboardReturnIcon className='return' onClick={sidebarStatus} />
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
                 <div className="chat-header-info">
                     <h3>{roomName}</h3>
@@ -86,7 +98,7 @@ function Chat() {
                 <InsertEmoticonIcon />
                 <form>
                     <input value={msg} onChange={(e) => setMsg(e.target.value)} type="text" placeholder='Type a message' />
-                    <button onClick={sendMessage} type='submit'>Send a message</button>
+                    <button onClick={sendMessage} type='submit'><SendIcon /></button>
                 </form>
                 <MicIcon />
             </div>

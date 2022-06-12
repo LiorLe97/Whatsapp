@@ -12,6 +12,12 @@
     border-bottom: 1px solid lightgray;
 }
 
+.return {
+    display: none !important;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
 .chat-header-info {
     flex: 1;
     padding-left: 20px;
@@ -36,65 +42,88 @@
     flex: 1;
     background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
     background-repeat: repeat;
-    background-position:center;
-    overflow:scroll;
-    padding:30px;
+    background-position: center;
+    overflow: scroll;
+    padding: 30px;
 }
 
-.chat-msg{
-    position:relative;
-    font-size:16px;
-    padding:10px;
+.chat-msg {
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
     background-color: white;
-    border-radius:10px;
-    width:fit-content;
-    margin-bottom:30px;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 30px;
 }
 
-.chat-reciever{
-    margin-left:auto;
+.chat-reciever {
+    margin-left: auto;
     background-color: #dcf8c6;
 
 }
 
-.chat-name{
-    position:absolute;
-    top:-15px;
-    font-weight:800;
-    font-size:x-small;
+.chat-name {
+    position: absolute;
+    top: -15px;
+    font-weight: 800;
+    font-size: x-small;
 }
 
-.chat-time{
-    margin-left:10px;
-    font-size:xx-small;
+.chat-time {
+    margin-left: 10px;
+    font-size: xx-small;
 }
 
-.chat-footer{
-    display:flex;
+.chat-footer {
+    display: flex;
     justify-content: space-between;
-    align-items:center;
-    height:60px;
-    border-top:1px solid lightgray;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid lightgray;
 }
 
-.chat-footer>form{
-    flex:1;
-    display:flex;
+.chat-footer>form {
+    flex: 1;
+    display: flex;
 }
 
-.chat-footer>form>input{
-    flex:1;
-    border-radius:30px;
-    outline:none;
-    padding:10px;
-    border:none;
+.chat-footer>form>input {
+    flex: 1;
+    border-radius: 30px;
+    outline: none;
+    padding: 10px;
+    border: none;
 }
 
-.chat-footer>form>button{
-    display:none;
+.chat-footer>form>button {
+    display: none;
+    border-radius: 50%;
+    width: 37px;
+    margin-left: 5px;
 }
 
-.chat-footer>.MuiSvgIcon-root{
-    padding:10px;
-    color:gray;
+.chat-footer>.MuiSvgIcon-root {
+    padding: 10px;
+    color: gray;
+}
+
+@media(max-width:768px) {
+    .chat {
+        flex-grow: 1;
+    }
+
+    .return {
+        display: flex !important;
+    }
+
+    .chat-footer>form>button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
 }
