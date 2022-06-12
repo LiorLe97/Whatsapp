@@ -35,6 +35,7 @@ function Chat() {
                     }))
                 ))
             })
+            
         }
 
     }, [roomId])
@@ -45,6 +46,7 @@ function Chat() {
 
     const sendMessage = (e) => {
         e.preventDefault();
+        console.log(window.scrollMaxY)
         if (msg === '') return
         db.collection('rooms').doc(roomId.roomId).collection('messages').add({
             name: user.displayName,

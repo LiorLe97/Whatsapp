@@ -2,7 +2,7 @@ import { defaultListboxReducer } from "@mui/base";
 
 export const initialState = {
     user: null,
-    status:false,
+    status:true,
 };
 
 export const actionTypes = {
@@ -23,9 +23,9 @@ const reducer = (state, action) => {
                     status:action.status
                 }
         default:
+            console.log(state,'<<<< changed status')
             return state;
+        }
     }
-}
-console.log(initialState,'<<<< changed status')
 
 export default reducer;

@@ -7,6 +7,7 @@
 
 .sidebar>.MuiSvgIcon-root{
     cursor: pointer;
+    display:none;
 }
 
 .sidebar-search {
@@ -71,5 +72,8 @@
     }
     .sidebar.status{
         display:flex;
+    }
+    .sidebar>.MuiSvgIcon-root{
+        display: flex;
     }
 }

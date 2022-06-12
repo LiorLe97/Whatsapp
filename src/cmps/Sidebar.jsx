@@ -10,11 +10,13 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import { useStateValue } from '../Stateprovider';
 import { actionTypes } from '../reducer'
+import { useParams } from 'react-router-dom';
 
 
 function Sidebar() {
     const [rooms, setRooms] = useState([]);
     const [{ user, status }, dispatch] = useStateValue();
+    const currParams = useParams();
     useEffect(() => {
         db.collection('rooms').onSnapshot(snapshot => (
             setRooms(snapshot.docs.map(doc => ({
